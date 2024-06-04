@@ -4,6 +4,7 @@ import GameBoard from '../components/GameBoard'
 import StartGame from '../components/StartGame'
 import NextGame from '../components/NextGame'
 import DescribeGame from '../components/DescribeGame'
+import GameStart from '../components/GameStart'
 
 const AllRoutes = () => {
   return (
@@ -12,6 +13,7 @@ const AllRoutes = () => {
       <Route path='/start' element={<StartGame />} />
       <Route path='/next' element={<NextGame />} />
       <Route path='/play' element={<DescribeGame />} />
+      <Route path='/gamestart' element={<GameStart />} />
     </Routes>
   )
 }

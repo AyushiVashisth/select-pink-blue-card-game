@@ -13,7 +13,7 @@ const DescribeGame: React.FC = () => {
     const navigate = useNavigate();
 
     const handleStart = () => {
-        navigate("/play");
+        navigate("/gamestart");
     }
     const handleBack = () => {
         navigate("/start");

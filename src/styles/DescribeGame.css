@@ -7,84 +7,22 @@
   background-position: center;
 }
 
-.monkey-image {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: transform 0.5s ease-in-out;
-}
-
-.monkey-image.jump {
-  transform: translate(-50%, -100px);
-}
-
-.vector-image,
-.ellipse3091-image,
-.ellipse3101-image,
-.cog-image,
-.star-image,
-.ellipse3092-image,
-.ellipse3102-image,
 .group123-image,
-.group149-image,
-.heading1lifeskills-image,
 .frame17-image,
 .vector7-image {
   position: absolute;
 }
 
-.vector-image {
-  top: 10%;
-  left: 10%;
-}
-
-.ellipse3091-image {
-  top: 20%;
-  left: 20%;
-}
-
-.ellipse3101-image {
-  top: 30%;
-  left: 30%;
-}
-
-.cog-image {
-  top: 40%;
-  left: 40%;
-}
-
-.star-image {
-  top: 50%;
-  left: 50%;
-}
-
-.ellipse3092-image {
-  top: 60%;
-  left: 60%;
-}
-
-.ellipse3102-image {
-  top: 70%;
-  left: 70%;
-}
-
 .group123-image {
   cursor: pointer;
-  top: 85%;
+  bottom: 5%;
   left: 80%;
+  width: 17%;
   z-index: 2;
 }
 
-.group149-image {
-  top: 90%;
-  left: 90%;
-}
-
-.heading1lifeskill3-image {
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
+.group123-image:hover {
+  width: 18%;
 }
 
 .frame17-image {
@@ -110,9 +48,7 @@
 }
 
 .card {
-  /* border: 1px solid #ccc; */
   background-image: url("../image/DescribeGame/Rectangle-160.png");
-  /* padding: 16px; */
   border-radius: 8px;
   width: 72%;
   height: 105%;

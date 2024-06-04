@@ -1,4 +1,4 @@
-.game-board {
+/* .game-board {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -86,7 +86,16 @@
   left: 19%;
   width: 1%;
   transform: translateX(-50%);
+} */
+
+.group123-image,
+.group149-image,
+.heading1lifeskills1-image,
+.group155-image,
+.group156-image {
+  position: absolute;
 }
+
 
 .group123-image {
   cursor: pointer;

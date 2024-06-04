@@ -1,4 +1,4 @@
-.game-board {
+/* .game-board {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -78,6 +78,13 @@
   left: 19%;
   width: 1%;
   transform: translateX(-50%);
+} */
+
+
+.group123-image,
+.group149-image,
+.heading1lifeskills-image {
+  position: absolute;
 }
 
 .group123-image {
@@ -90,11 +97,11 @@
   width: 18%;
 }
 
-.group149-image {
+/* .group149-image {
   top: 15%;
   right: 17%;
   width: 30%;
-}
+} */
 
 .heading1lifeskills-image {
   top: 24%;
