@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, GameState } from '../assets/types';
 import '../styles/GameStart.css';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,13 @@ import pineapleImage from '../image/GameStart/pineapple.jpg';
 import pImage from '../image/GameStart/p.jpg';
 import mangoImage from '../image/GameStart/mongo.avif';
 import mImage from '../image/GameStart/m.webp';
+import earned from "../image/GameStart/Group-146-Earned.png"
+import monkey6 from "../image/GameStart/monkey6.png"
+import banana1 from "../image/GameStart/banana1.png"
+import banana2 from "../image/GameStart/banana2.png"
+import banana3 from "../image/GameStart/banana3.png"
+import banana4 from "../image/GameStart/banana4.png"
+import banana5 from "../image/GameStart/banana5.png"
 
 const initialCards: Card[] = [
   { id: 1, type: 'fruit', content: appleImage, isFlipped: false, isMatched: false },
@@ -44,6 +51,48 @@ const GameStart: React.FC = () => {
   }
 
   const [selectedCards, setSelectedCards] = useState<Card[]>([]);
+  const [matchedCardsForModal, setMatchedCardsForModal] = useState<Card[]>([]);
+  const [showMatchMessage, setShowMatchMessage] = useState(false);
+  const [showEarnedModal, setShowEarnedModal] = useState(false);
+
+
+  const shuffle = (array: any[]) => {
+    let currentIndex = array.length;
+    let temporaryValue;
+    let randomIndex;
+
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
+  useEffect(() => {
+    setGameState(prevState => ({
+      ...prevState,
+      cards: shuffle(initialCards),
+    }));
+  }, []);
+
+  useEffect(() => {
+    if (gameState.matches === 6) {
+      setShowEarnedModal(true);
+      setTimeout(() => {
+        setShowEarnedModal(false);
+        navigate("/play")
+      }, 3000);
+    }
+    // eslint-disable-next-line
+  }, [gameState.matches]);
+
+
+
 
   const handleCardClick = (id: number) => {
     setGameState(prevState => {
@@ -57,27 +106,47 @@ const GameStart: React.FC = () => {
       setSelectedCards(newSelectedCards);
 
       if (newSelectedCards.length === 2) {
-        const [firstCard, secondCard] = newSelectedCards;
-        if (
-          (firstCard.type === 'fruit' && secondCard.type === 'alphabet') ||
-          (firstCard.type === 'alphabet' && secondCard.type === 'fruit')
-        ) {
+        setTimeout(() => {
+          const [firstCard, secondCard] = newSelectedCards;
           if (
-            (firstCard.content === appleImage && secondCard.content === aImage) ||
-            (firstCard.content === bananaImage && secondCard.content === bImage) ||
-            (firstCard.content === grapesImage && secondCard.content === gImage) ||
-            (firstCard.content === pineapleImage && secondCard.content === pImage) ||
-            (firstCard.content === mangoImage && secondCard.content === mImage) ||
-            (firstCard.content === orangeImage && secondCard.content === oImage)
+            (firstCard.type === 'fruit' && secondCard.type === 'alphabet') ||
+            (firstCard.type === 'alphabet' && secondCard.type === 'fruit')
           ) {
-            firstCard.isMatched = true;
-            secondCard.isMatched = true;
-            alert("It's a match!");
-            setGameState({
-              ...prevState,
-              cards,
-              matches: prevState.matches + 1,
-            });
+            if (
+              (firstCard.content === appleImage && secondCard.content === aImage) ||
+              (firstCard.content === bananaImage && secondCard.content === bImage) ||
+              (firstCard.content === grapesImage && secondCard.content === gImage) ||
+              (firstCard.content === pineapleImage && secondCard.content === pImage) ||
+              (firstCard.content === mangoImage && secondCard.content === mImage) ||
+              (firstCard.content === orangeImage && secondCard.content === oImage)
+            ) {
+              firstCard.isMatched = true;
+              secondCard.isMatched = true;
+              setMatchedCardsForModal([firstCard, secondCard]);
+              setShowMatchMessage(true);
+              setTimeout(() => {
+                setShowMatchMessage(false);
+                setGameState(prevState => ({
+                  ...prevState,
+                  cards: prevState.cards.map(card =>
+                    card.isMatched ? { ...card, content: null } : card
+                  ),
+                  matches: prevState.matches + 1,
+                }));
+              }, 3000);
+            } else {
+              setTimeout(() => {
+                firstCard.isFlipped = false;
+                secondCard.isFlipped = false;
+                setGameState({
+                  ...prevState,
+                  cards,
+                  moves: prevState.moves + 1,
+                });
+                setSelectedCards([]);
+              }, 1000);
+              return prevState;
+            }
           } else {
             setTimeout(() => {
               firstCard.isFlipped = false;
@@ -91,20 +160,8 @@ const GameStart: React.FC = () => {
             }, 1000);
             return prevState;
           }
-        } else {
-          setTimeout(() => {
-            firstCard.isFlipped = false;
-            secondCard.isFlipped = false;
-            setGameState({
-              ...prevState,
-              cards,
-              moves: prevState.moves + 1,
-            });
-            setSelectedCards([]);
-          }, 1000);
-          return prevState;
-        }
-        setSelectedCards([]);
+          setSelectedCards([]);
+        }, 1000);
       }
       return { ...prevState, cards, moves: prevState.moves + 1 };
     });
@@ -112,6 +169,38 @@ const GameStart: React.FC = () => {
 
   return (
     <div className='game-start-cards'>
+      {showMatchMessage && (
+        <div className="match-modal">
+          <div className="modal-content">
+            <div className="match-text">It's a match!</div>
+            <div className="matched-cards">
+              {matchedCardsForModal.length === 2 && (
+                <>
+                  <img src={matchedCardsForModal[0].content || ''} alt="content" className='firstCard' />
+                  <img src={matchedCardsForModal[1].content || ''} alt="content" className='secondCard' />
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+      {showEarnedModal && (
+        <div className="earned-modal">
+          <div className="earned-modal-content">
+            <div className="earned-text">
+              <img src={earned} alt="earned" className='earnedImage' />
+              <img src={monkey6} alt="monkey6" className='monkey6Image' />
+              <img src={banana1} alt="banana1" className='banana1Image' />
+              <img src={banana2} alt="banana2" className='banana2Image' />
+              <img src={banana3} alt="banana3" className='banana3Image' />
+              <img src={banana4} alt="banana4" className='banana4Image' />
+              <img src={banana5} alt="banana5" className='banana5Image' />
+            </div>
+            <button onClick={() => setShowEarnedModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
       <div onClick={handleBack}><img src={group156Image} alt="group156Image" className="group156-image" /></div>
       <div className="game-info">
         <p>Moves: {gameState.moves}</p>
@@ -131,7 +220,7 @@ const GameStart: React.FC = () => {
                 <div className="card-inner">
                   <div className="card-front-pink"></div>
                   <div className="card-back">
-                    <img src={card.content} alt="content" />
+                    {card.content && <img src={card.content} alt="content" />}
                   </div>
                 </div>
               </div>
@@ -149,7 +238,7 @@ const GameStart: React.FC = () => {
                 <div className="card-inner">
                   <div className="card-front-blue"></div>
                   <div className="card-back">
-                    <img src={card.content} alt="content" />
+                    {card.content && <img src={card.content} alt="content" />}
                   </div>
                 </div>
               </div>
