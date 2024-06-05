@@ -47,7 +47,7 @@
   z-index: 1;
 }
 
-.card {
+.game-board .card {
   background-image: url("../image/DescribeGame/Rectangle-160.png");
   border-radius: 8px;
   width: 72%;
