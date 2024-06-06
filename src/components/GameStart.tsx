@@ -240,8 +240,13 @@ const GameStart: React.FC = () => {
       )}
 
       <div onClick={handleBack}><img src={group156Image} alt="group156Image" className="group156-image" /></div>
+      <div className="progress-bar-container">
+        <div className="progress-bar" style={{ width: `${(gameState.matches / 6) * 100}%` }}></div>
+
+      </div>
+      <img src={banana3} alt="banana1" className='banana1-bar' />
       <div className="game-info">
-        <h4>Matches: {gameState.matches}</h4>
+        {/* <h4>Matches: {gameState.matches}</h4> */}
         <h5>Wrong Moves left: {6 - gameState.moves}</h5>
 
 
