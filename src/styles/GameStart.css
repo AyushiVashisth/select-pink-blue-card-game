@@ -7,6 +7,17 @@
   border: 1px solid white;
 }
 
+.group156-image {
+  position: absolute;
+  top: 4%;
+  left: 8%;
+  width: 10%;
+  transform: translateX(-50%);
+}
+.group156-image:hover {
+  width: 11%;
+}
+
 .game-start {
   display: flex;
   justify-content: space-around;
@@ -17,7 +28,7 @@
 
 .game-start .pink-cards,
 .game-start .blue-cards {
-  margin-top: 60px;
+  margin-top: 150px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -91,6 +102,32 @@
 .game-start .game-info {
   text-align: center;
 }
+.game-info h4 {
+    border: 5px solid white;
+    position: absolute;
+    right: 20%;
+    background-color: rgb(87, 210, 250);
+    padding: 15px;
+    font-size: 25px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: white;
+  }
+.game-info h5 {
+  border: 5px solid white;
+  position: absolute;
+  right: 0%;
+  background-color: rgb(87, 210, 250);
+  padding: 15px;
+  font-size: 25px;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  color: white;
+}
 .matching-message {
   position: absolute;
   top: 20px;
@@ -131,20 +168,22 @@
 
 .match-text {
   position: absolute;
-  top: -500%;
-  left: 240%;
-  width: 900%;
-  font-size: 3.5rem;
-  margin-bottom: 20px;
+  top: -600%;
+  left: 1%;
+  width: 1900%;
+  height: 100px;
+  font-size: 4.5rem;
+  /* margin-bottom: 20px; */
   font-weight: bolder;
-  gap: 0px;
+  /* gap: 0px; */
   border: 7px 0px 0px 0px;
-  opacity: 0px;
-  font-family: Nunito;
+  /* opacity: 0px; */
+  /* font-family: Nunito; */
+  /* border: 5px solid white; */
   /* font-size: 96px; */
   /* font-weight: 800; */
-  line-height: 130.94px;
-  letter-spacing: 0.08em;
+  /* line-height: 130.94px; */
+  /* letter-spacing: 0.08em; */
   /* text-align: center; */
   color: #ef8f35;
 
@@ -172,34 +211,34 @@
 }
 
 .earned-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  
-  .earned-modal-content {
-    position: relative;
-    /* background: #fff; */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
-  }
-  
-  .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.earned-modal-content {
+  position: relative;
+  /* background: #fff; */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
 
 .earned-text .earnedImage,
 .earned-text .monkey6Image,
@@ -212,49 +251,55 @@
 }
 
 .earned-text .earnedImage {
-    position: absolute;
-    top: -500%;
-    left: -200%;
-    width: 550%;
-  }
-  
-  .earned-text .monkey6Image {
-    position: absolute;
-    left: -50%;
-    top: -40%;
-    width: 300%;
-  }
-  
-  .earned-text .banana1Image {
-    position: absolute;
-    top: -350%;
-    left: -400%;
-    width: 150%;
-  }
-  .earned-text .banana2Image {
-    position: absolute;
-    top: 50%;
-    left: -500%;
-    width: 150%;
-  }
-  .earned-text .banana3Image {
-    position: absolute;
-    top: -300%;
-    left: 350%;
-    width: 200%;
-  }
-  .earned-text .banana4Image {
-    position: absolute;
-    top: 10%;
-    left: 500%;
-    width: 200%;
-  }
-  
-  
-  .earned-text .banana5Image {
-    position: absolute;
-    top: 300%;
-    left: 400%;
-    width: 150%;
-  }
-  
+  position: absolute;
+  top: -500%;
+  left: -200%;
+  width: 550%;
+}
+
+.tryAgainImage {
+  position: absolute;
+  top: -500%;
+  left: -200%;
+  width: 580%;
+}
+
+.earned-text .monkey6Image {
+  position: absolute;
+  left: -50%;
+  top: -40%;
+  width: 300%;
+  z-index: 3;
+}
+
+.earned-text .banana1Image {
+  position: absolute;
+  top: -350%;
+  left: -400%;
+  width: 150%;
+}
+.earned-text .banana2Image {
+  position: absolute;
+  top: 50%;
+  left: -500%;
+  width: 150%;
+}
+.earned-text .banana3Image {
+  position: absolute;
+  top: -300%;
+  left: 350%;
+  width: 200%;
+}
+.earned-text .banana4Image {
+  position: absolute;
+  top: 10%;
+  left: 500%;
+  width: 200%;
+}
+
+.earned-text .banana5Image {
+  position: absolute;
+  top: 300%;
+  left: 400%;
+  width: 150%;
+}

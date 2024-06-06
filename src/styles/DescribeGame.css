@@ -1,4 +1,4 @@
-.game-board {
+.game-describe {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -6,14 +6,36 @@
   background-size: cover;
   background-position: center;
 }
-
-.group123-image,
-.frame17-image,
-.vector7-image {
+.game-describe .group156-image,
+.game-describe .group148-image,
+.game-describe .group154-image,
+.game-describe .group123-image,
+.game-describe .frame17-image,
+.game-describe .vector7-image {
   position: absolute;
 }
 
-.group123-image {
+.game-describe .group156-image {
+  top: 4%;
+  left: 8%;
+  width: 10%;
+  transform: translateX(-50%);
+}
+.game-describe .group156-image:hover {
+  width: 11%;
+}
+
+.game-describe .group148-image {
+  top: 4%;
+  left: 20%;
+}
+.game-describe .group154-image {
+  top: 0%;
+  right: 27%;
+  width: 10%;
+}
+
+.game-describe .group123-image {
   cursor: pointer;
   bottom: 5%;
   left: 80%;
@@ -21,21 +43,21 @@
   z-index: 2;
 }
 
-.group123-image:hover {
+.game-describe .group123-image:hover {
   width: 18%;
 }
 
-.frame17-image {
+.game-describe .frame17-image {
   bottom: 15%;
   left: 7.5%;
   width: 80%;
   z-index: 0;
 }
-.vector7-image {
+.game-describe .vector7-image {
   bottom: 20%;
   left: 14%;
 }
-.gridContainer {
+.game-describe .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
@@ -47,7 +69,7 @@
   z-index: 1;
 }
 
-.game-board .card {
+.game-describe .card {
   background-image: url("../image/DescribeGame/Rectangle-160.png");
   border-radius: 8px;
   width: 72%;
@@ -56,109 +78,109 @@
   background-size: cover;
 }
 
-.card1Image,
-.cardImage,
-.Headinglifeskills1Image,
-.Headinglifeskills2Image,
-.oneImage {
+.game-describe .card1Image,
+.game-describe .cardImage,
+.game-describe .Headinglifeskills1Image,
+.game-describe .Headinglifeskills2Image,
+.game-describe .oneImage {
   position: absolute;
 }
 
-.card1Image {
+.game-describe .card1Image {
   top: 5%;
   left: 2%;
   width: 15%;
   z-index: 1;
 }
 
-.cardImage {
+.game-describe .cardImage {
   top: 5%;
   left: 7%;
   width: 14%;
   z-index: 2;
 }
 
-.Headinglifeskills1Image {
+.game-describe .Headinglifeskills1Image {
   bottom: 8%;
   left: 6%;
   width: 10.5%;
 }
 
-.Headinglifeskills2Image {
+.game-describe .Headinglifeskills2Image {
   bottom: 0%;
   left: 6%;
   width: 10%;
 }
 
-.oneImage {
+.game-describe .oneImage {
   bottom: 17%;
   left: 0%;
   width: 3%;
 }
 
-.card2Image,
-.Headinglifeskills3Image,
-.Headinglifeskills4Image,
-.twoImage {
+.game-describe .card2Image,
+.game-describe .Headinglifeskills3Image,
+.game-describe .Headinglifeskills4Image,
+.game-describe .twoImage {
   position: absolute;
 }
 
-.card2Image {
+.game-describe .card2Image {
   top: 5%;
   left: 38%;
   width: 15%;
 }
 
-.Headinglifeskills3Image {
+.game-describe .Headinglifeskills3Image {
   left: 40%;
   bottom: 10%;
   width: 10.5%;
 }
 
-.Headinglifeskills4Image {
+.game-describe .Headinglifeskills4Image {
   bottom: 0%;
   left: 40%;
   width: 11%;
 }
 
-.twoImage {
+.game-describe .twoImage {
   bottom: 17%;
   left: 33.5%;
   width: 3%;
 }
 
-.group157Image,
-.Headinglifeskills5Image,
-.Headinglifeskills6Image,
-.Headinglifeskills7Image,
-.threeImage {
+.game-describe .group157Image,
+.game-describe .Headinglifeskills5Image,
+.game-describe .Headinglifeskills6Image,
+.game-describe .Headinglifeskills7Image,
+.game-describe .threeImage {
   position: absolute;
 }
 
-.group157Image {
+.game-describe .group157Image {
   top: 5%;
   right: 8%;
   width: 25%;
 }
 
-.Headinglifeskills5Image {
+.game-describe .Headinglifeskills5Image {
   right: 15%;
   bottom: 21%;
   width: 12%;
 }
 
-.Headinglifeskills6Image {
+.game-describe .Headinglifeskills6Image {
   bottom: 12%;
   right: 13%;
   width: 15%;
 }
-.Headinglifeskills7Image {
+.game-describe .Headinglifeskills7Image {
   bottom: 2%;
   right: 14%;
   width: 13%;
 }
 
-.threeImage {
+.game-describe .threeImage {
   bottom: 17%;
   right: 30.1%;
   width: 3%;

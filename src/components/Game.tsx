@@ -20,7 +20,7 @@ const Game: React.FC = () => {
         return () => clearInterval(interval);
     }, []);
     return (
-        <div className="game-board">
+        <div className="game">
             <img src={monkeyImage} alt="Monkey" className={`monkey-image ${jump ? 'jump' : ''}`} />
             <img src={vectorImage} alt="vectorImage" className="vector-image" />
             <img src={ellipse3091Image} alt="ellipse3091Image" className="ellipse3091-image" />

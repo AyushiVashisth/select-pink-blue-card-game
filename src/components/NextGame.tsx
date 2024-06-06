@@ -31,7 +31,7 @@ const NextGame: React.FC = () => {
     }
 
     return (
-        <div className="game-board">
+        <div className="next-game">
             <img src={monkeyImage} alt="Monkey" className={`monkey-image ${jump ? 'jump' : ''}`} />
             <img src={vectorImage} alt="Vector" className="vector-image" />
             <div onClick={handleStart}>

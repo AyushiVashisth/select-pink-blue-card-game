@@ -1,22 +1,28 @@
-.group123-image,
-.group149-image,
-.heading1lifeskills-image {
+.game-board .group123-image,
+.game-board .group149-image,
+.game-board .heading1lifeskills-image {
   position: absolute;
 }
 
-.group123-image {
+.game-board .group123-image {
   cursor: pointer;
   bottom: 5%;
   left: 80%;
   width: 17%;
 }
-.group123-image:hover {
+.game-board .group123-image:hover {
   width: 18%;
 }
 
-.heading1lifeskills-image {
+.game-board .heading1lifeskills-image {
   top: 24%;
-  right: 3%;
+  right: 4%;
   width: 24%;
   transform: translateX(-50%);
+}
+.game-board .group149-image {
+  top: 15%;
+  right: 13%;
+  width: 30%;
+  /* border: 1px solid red; */
 }

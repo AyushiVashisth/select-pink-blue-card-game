@@ -20,7 +20,7 @@ const StartGame: React.FC = () => {
     }
 
     return (
-        <div className="game-board">
+        <div className="start-game-board">
             <Game />
             <div onClick={handleStart}>
                 <img src={group123Image} alt="Group 123" className="group123-image" />

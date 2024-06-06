@@ -15,13 +15,14 @@ import pineapleImage from '../image/GameStart/pineapple.jpg';
 import pImage from '../image/GameStart/p.jpg';
 import mangoImage from '../image/GameStart/mongo.avif';
 import mImage from '../image/GameStart/m.webp';
-import earned from "../image/GameStart/Group-146-Earned.png"
-import monkey6 from "../image/GameStart/monkey6.png"
-import banana1 from "../image/GameStart/banana1.png"
-import banana2 from "../image/GameStart/banana2.png"
-import banana3 from "../image/GameStart/banana3.png"
-import banana4 from "../image/GameStart/banana4.png"
-import banana5 from "../image/GameStart/banana5.png"
+import earned from "../image/GameStart/Group-146-Earned.png";
+import monkey6 from "../image/GameStart/monkey6.png";
+import banana1 from "../image/GameStart/banana1.png";
+import banana2 from "../image/GameStart/banana2.png";
+import banana3 from "../image/GameStart/banana3.png";
+import banana4 from "../image/GameStart/banana4.png";
+import banana5 from "../image/GameStart/banana5.png";
+import tryAgain from "../image/GameStart/try.png";
 
 const initialCards: Card[] = [
   { id: 1, type: 'fruit', content: appleImage, isFlipped: false, isMatched: false },
@@ -38,9 +39,26 @@ const initialCards: Card[] = [
   { id: 12, type: 'alphabet', content: oImage, isFlipped: false, isMatched: false },
 ];
 
+const shuffle = (array: any[]) => {
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+};
+
 const GameStart: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>({
-    cards: initialCards,
+    cards: shuffle(initialCards.slice()),
     moves: 0,
     matches: 0,
   });
@@ -54,47 +72,51 @@ const GameStart: React.FC = () => {
   const [matchedCardsForModal, setMatchedCardsForModal] = useState<Card[]>([]);
   const [showMatchMessage, setShowMatchMessage] = useState(false);
   const [showEarnedModal, setShowEarnedModal] = useState(false);
-
-
-  const shuffle = (array: any[]) => {
-    let currentIndex = array.length;
-    let temporaryValue;
-    let randomIndex;
-
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  };
-
-  useEffect(() => {
-    setGameState(prevState => ({
-      ...prevState,
-      cards: shuffle(initialCards),
-    }));
-  }, []);
+  const [showTryAgainModal, setShowTryAgainModal] = useState(false);
 
   useEffect(() => {
     if (gameState.matches === 6) {
       setShowEarnedModal(true);
       setTimeout(() => {
         setShowEarnedModal(false);
-        navigate("/play")
+        setGameState({
+          cards: shuffle(initialCards),
+          moves: 0,
+          matches: 0,
+        });
+        navigate("/play");
       }, 3000);
     }
-    // eslint-disable-next-line
-  }, [gameState.matches]);
+  }, [gameState.matches, navigate]);
 
+  useEffect(() => {
+    if (gameState.moves === 6 && gameState.matches < 6) {
+      setShowTryAgainModal(true);
+      setTimeout(() => {
+        setShowTryAgainModal(false);
+        setGameState({
+          cards: shuffle(initialCards),
+          moves: 0,
+          matches: 0,
+        });
+        navigate("/play");
+      }, 3000);
+    }
+  }, [gameState.moves, gameState.matches, navigate]);
 
+  useEffect(() => {
+    setGameState(prevState => ({
+      ...prevState,
+      cards: shuffle(initialCards.map(card => ({ ...card, isFlipped: false, isMatched: false }))),
+      moves: 0,
+      matches: 0,
+    }));
+  }, []);
 
 
   const handleCardClick = (id: number) => {
+    if (selectedCards.length >= 2 || gameState.moves >= 6) return;
+
     setGameState(prevState => {
       const cards = [...prevState.cards];
       const card = cards.find(c => c.id === id);
@@ -145,7 +167,7 @@ const GameStart: React.FC = () => {
                 });
                 setSelectedCards([]);
               }, 1000);
-              return prevState;
+              return { ...prevState, moves: prevState.moves + 1 };
             }
           } else {
             setTimeout(() => {
@@ -158,12 +180,12 @@ const GameStart: React.FC = () => {
               });
               setSelectedCards([]);
             }, 1000);
-            return prevState;
+            return { ...prevState, moves: prevState.moves + 1 };
           }
           setSelectedCards([]);
         }, 1000);
       }
-      return { ...prevState, cards, moves: prevState.moves + 1 };
+      return { ...prevState, cards };
     });
   };
 
@@ -172,7 +194,7 @@ const GameStart: React.FC = () => {
       {showMatchMessage && (
         <div className="match-modal">
           <div className="modal-content">
-            <div className="match-text">It's a match!</div>
+            <h1 className="match-text">It's a match!</h1>
             <div className="matched-cards">
               {matchedCardsForModal.length === 2 && (
                 <>
@@ -200,11 +222,29 @@ const GameStart: React.FC = () => {
           </div>
         </div>
       )}
+      {showTryAgainModal && (
+        <div className="earned-modal">
+          <div className="earned-modal-content">
+            <div className="earned-text">
+              <img src={monkey6} alt="monkey6" className='monkey6Image' />
+              <img src={banana1} alt="banana1" className='banana1Image' />
+              <img src={banana2} alt="banana2" className='banana2Image' />
+              <img src={banana3} alt="banana3" className='banana3Image' />
+              <img src={banana4} alt="banana4" className='banana4Image' />
+              <img src={banana5} alt="banana5" className='banana5Image' />
+              <img src={tryAgain} alt="tryAgain" className='tryAgainImage' />
+            </div>
+            <button onClick={() => setShowTryAgainModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
 
       <div onClick={handleBack}><img src={group156Image} alt="group156Image" className="group156-image" /></div>
       <div className="game-info">
-        <p>Moves: {gameState.moves}</p>
-        <p>Matches: {gameState.matches}</p>
+        <h4>Matches: {gameState.matches}</h4>
+        <h5>Wrong Moves left: {6 - gameState.moves}</h5>
+
+
       </div>
 
       <div className="game-start">

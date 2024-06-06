@@ -21,7 +21,7 @@ const DescribeGame: React.FC = () => {
 
 
     return (
-        <div className="game-board">
+        <div className="game-describe">
             <div onClick={handleStart}>
                 <img src={group123Image} alt="Group 123" className="group123-image" />
             </div>
