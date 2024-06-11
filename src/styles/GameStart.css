@@ -1,6 +1,6 @@
 .game-start-cards {
-  width: 100%;
-  height: 100vh;
+  /* width: 99.91%; */
+  height: 99.8vh;
   background-image: url("../image/image.png");
   background-size: cover;
   background-position: center;
@@ -24,6 +24,7 @@
   align-items: center;
   width: 85%;
   margin: auto;
+  margin-top: 70px;
 }
 
 .game-start .pink-cards,
@@ -116,17 +117,21 @@
   color: white;
 } */
 .game-info h5 {
-  border: 5px solid white;
+  /* border: 5px solid white; */
   position: absolute;
   right: 0%;
-  background-color: rgb(87, 210, 250);
+  /* background-color: rgb(87, 210, 250); */
   padding: 15px;
-  font-size: 25px;
-  border-radius: 20px;
-  margin-right: 20px;
-  margin-top: -15px;
+  font-size: 27px;
+  /* border-radius: 20px; */
+  margin-right: 37px;
+  margin-top: 48px;
   font-weight: bold;
   color: white;
+}
+.game-info .wrontMovesImage {
+  position: absolute;
+  right: 0%;
 }
 .matching-message {
   position: absolute;

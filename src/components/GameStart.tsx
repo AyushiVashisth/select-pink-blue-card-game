@@ -23,6 +23,7 @@ import banana3 from "../image/GameStart/banana3.png";
 import banana4 from "../image/GameStart/banana4.png";
 import banana5 from "../image/GameStart/banana5.png";
 import tryAgain from "../image/GameStart/try.png";
+import wrontMovesImage from "../image/GameStart/wrongMoves.png";
 
 const initialCards: Card[] = [
   { id: 1, type: 'fruit', content: appleImage, isFlipped: false, isMatched: false },
@@ -240,13 +241,14 @@ const GameStart: React.FC = () => {
       )}
 
       <div onClick={handleBack}><img src={group156Image} alt="group156Image" className="group156-image" /></div>
-      <div className="progress-bar-container">
+      {/* <div className="progress-bar-container">
         <div className="progress-bar" style={{ width: `${(gameState.matches / 6) * 100}%` }}></div>
 
-      </div>
-      <img src={banana3} alt="banana1" className='banana1-bar' />
+      </div> */}
+      {/* <img src={banana3} alt="banana1" className='banana1-bar' /> */}
       <div className="game-info">
         {/* <h4>Matches: {gameState.matches}</h4> */}
+        <img src={wrontMovesImage} alt="wrontMoves" className='wrontMovesImage' />
         <h5>Wrong Moves left: {6 - gameState.moves}</h5>
 
 
