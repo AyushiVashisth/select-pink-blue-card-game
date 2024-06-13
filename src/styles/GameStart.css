@@ -119,7 +119,7 @@
 .game-info h5 {
   /* border: 5px solid white; */
   position: absolute;
-  right: 5%;
+  right: 0%;
   /* background-color: rgb(87, 210, 250); */
   padding: 15px;
   font-size: 27px;
@@ -131,8 +131,7 @@
 }
 .game-info .wrontMovesImage {
   position: absolute;
-  right: 5%;
-  width: 25%;
+  right: 0%;
 }
 .matching-message {
   position: absolute;
