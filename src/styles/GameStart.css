@@ -35,8 +35,8 @@
 }
 
 .game-start .card {
-  width: 200px;
-  height: 230px;
+  width: 170px;
+  height: 190px;
   cursor: pointer;
   perspective: 1000px;
 }
@@ -119,7 +119,7 @@
 .game-info h5 {
   /* border: 5px solid white; */
   position: absolute;
-  right: 0%;
+  right: 5%;
   /* background-color: rgb(87, 210, 250); */
   padding: 15px;
   font-size: 27px;
@@ -131,7 +131,8 @@
 }
 .game-info .wrontMovesImage {
   position: absolute;
-  right: 0%;
+  right: 5%;
+  width: 25%;
 }
 .matching-message {
   position: absolute;
